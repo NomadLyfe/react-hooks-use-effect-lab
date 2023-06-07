@@ -5,7 +5,7 @@ function Question({ question, onAnswered }) {
 
   useEffect(() => {
     let timerID;
-    if (timeRemaining >= 0) {
+    if (timeRemaining > 0) {
       timerID = setTimeout(() => {
         setTimeRemaining((timeRemaining) => timeRemaining - 1);
       }, 1000);
@@ -14,7 +14,7 @@ function Question({ question, onAnswered }) {
       onAnswered(false);
     }
     return function cleanup() {
-      clearInterval(timerID);
+      clearTimeout(timerID);
     }
   })
 
